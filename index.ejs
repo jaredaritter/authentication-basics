@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+    <title>Home</title>
+  </head>
+  <body class="container">
+    <div class="row justify-content-sm-center">
+      <div class="col-sm-6 mt-5">
+        <% if (currentUser) { %>
+        <h1 class="text-center mb-3">
+          Welcome back <%= currentUser.username %>
+        </h1>
+        <a href="/log-out">Log Out</a>
+        <%} else { %>
+        <h1>Please log in</h1>
+        <form action="/log-in" method="POST" class="mb-3">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username: </label>
+            <input
+              type="text"
+              name="username"
+              placeholder="username"
+              class="form-control"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password: </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              class="form-control"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+        <% } %>
+        <p>
+          <a href="/sign-up">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
