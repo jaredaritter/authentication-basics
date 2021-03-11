@@ -1,4 +1,5 @@
 // REQUIRED MODULES
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
@@ -9,9 +10,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // DB CONNECTION DETAILS AND INITIALIZATION
-const mongoDb =
-  'mongodb+srv://jared_user:KpTP3bpuwragw5uZ@cluster0.nxpzr.mongodb.net/auth?retryWrites=true&w=majority';
-mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.DB_URI, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo connection error'));
 
